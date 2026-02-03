@@ -1,0 +1,417 @@
+/* Mobile-first church app */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e8eae6;
+  color: #333;
+  min-height: 100vh;
+  padding-bottom: 72px; /* space for fixed nav */
+}
+
+/* Circular logo watermark (Sermons, Events, Prayer, Contact only) */
+.watermark-page .watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.watermark-page .watermark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.watermark-page header,
+.watermark-page main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+header {
+  width: 100%;
+  background: #1a365d;
+  color: #fff;
+  padding: 20px 20px 24px;
+  text-align: center;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.header-logo {
+  display: block;
+  height: 68px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.header-line {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+header .welcome {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Main content */
+main {
+  padding: 28px 24px 32px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Image slider */
+.slider-section {
+  margin-bottom: 32px;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slider-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.2;
+  overflow: hidden;
+  background: #d1d5db;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  background: #d1d5db;
+}
+
+/* Thumbnail strip over bottom of image */
+.slider-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  padding: 12px 12px 14px;
+}
+
+.slider-thumbnails {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider-thumbnails::-webkit-scrollbar {
+  height: 4px;
+}
+
+.slider-thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  background: #4a5568;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.slider-thumb:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slider-thumb.active {
+  box-shadow: 0 0 0 3px #fff, 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.slider-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Prev/Next and counter below thumbnails */
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.slider-btn {
+  padding: 10px 16px;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #1a365d;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease;
+}
+
+.slider-btn:hover {
+  background: #2c5282;
+}
+
+.slider-btn:active {
+  background: #2d3748;
+}
+
+.slider-counter {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  min-width: 3.5em;
+  text-align: center;
+}
+
+.about-section {
+  margin-top: 32px;
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.about-section h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a365d;
+  text-align: center;
+}
+
+.about-section p {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  text-align: left;
+}
+
+.about-section p:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-chambers {
+  margin: 0 0 14px;
+  padding-left: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.about-chambers li {
+  margin-bottom: 10px;
+}
+
+.about-chambers li:last-child {
+  margin-bottom: 0;
+}
+
+/* Placeholder page content (Sermons, Events, Prayer, Contact) */
+.page-content {
+  margin-top: 32px;
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.page-content h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a365d;
+  text-align: center;
+}
+
+.page-content p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  text-align: left;
+}
+
+/* Sermons page */
+.sermons-content {
+  margin-top: 32px;
+  background: #fff;
+  padding: 28px 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.sermons-title {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  text-align: center;
+}
+
+.sermons-description-wrap {
+  margin-bottom: 28px;
+}
+
+.sermons-description {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #444;
+  max-height: none; /* allow natural scroll/display */
+  overflow: visible;
+}
+
+.read-more-btn {
+  display: none; /* remove Read More button */
+}
+
+.sermon-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 88px; /* space so links don't float over fixed nav */
+}
+
+.sermon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: #1a365d;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 2px 6px rgba(26, 54, 93, 0.25);
+}
+
+.sermon-link:hover {
+  background: #2c5282;
+}
+
+.sermon-link:active {
+  transform: scale(0.98);
+}
+
+/* Fixed bottom navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1a365d; /* same as header */
+  padding: 12px 8px 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+}
+
+.bottom-nav a {
+  flex: 1;
+  padding: 14px 0;
+  margin: 0 4px;
+  border: none;
+  background: #1a365d; /* big button color */
+  color: #fff;
+  font-size: 1rem; /* larger text */
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px; /* slightly rounded corners */
+  min-height: 52px; /* bigger tappable area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.bottom-nav a:hover {
+  background: #2c5282;
+}
+
+.bottom-nav a:active {
+  transform: scale(0.97);
+}
